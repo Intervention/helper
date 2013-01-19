@@ -1,10 +1,13 @@
 {
     "name": "intervention/helper",
-    "description": "Essential helper functions",
+    "description": "Easier handling and formating of strings and dates",
+    "keywords": ["string", "date", "helper"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Oliver Vogel",
-            "email": "oliver@olivervogel.net"
+            "email": "oliver@olivervogel.net",
+            "homepage": "http://olivervogel.net/",
         }
     ],
     "require": {
