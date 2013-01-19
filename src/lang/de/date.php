@@ -2,15 +2,15 @@
 
 return array(
     
-    'n0w' => 'now',
+    'n0w' => 'Jetzt',
 
-    'second_choice' => 'second|seconds',
-    'minute_choice' => 'minute|minutes',
-    'hour_choice' => 'hour|hours',
-    'day_choice' => 'day|days',
-    'week_choice' => 'week|weeks',
-    'month_choice' => 'month|months',
-    'year_choice' => 'year|years',
+    'second_choice' => 'Sekunde|Sekunden',
+    'minute_choice' => 'Minute|Minuten',
+    'hour_choice' => 'Stunde|Stunden',
+    'day_choice' => 'Tag|Tage',
+    'week_choice' => 'Woche|Wochen',
+    'month_choice' => 'Monat|Monate',
+    'year_choice' => 'Jahr|Jahre',
 
     'age' => ':time :period',
     
