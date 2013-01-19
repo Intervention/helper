@@ -29,7 +29,7 @@ class DateServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$this->app['date'] = $this->app->share(function($app) {
-			return new Date;
+			return new Date($app['translator']);
 		});
 	}
 
