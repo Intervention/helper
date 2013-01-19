@@ -25,8 +25,8 @@ class Date
     {
         $timestamp = is_a($timestamp, 'DateTime') ? $timestamp : new DateTime($timestamp);
         
-        $format = "date.formats.{$format}";
-        $format = $this->translator->has($format) ? $this->translator->line($format)->get() : null;
+        $key = $this->getTranslationKey("date.formats.{$format}");
+        $format = $this->translator->has($key) ? $this->translator->get($key) : null;
         
         if (is_null($format)) {
             throw new \InvalidArgumentException('Date format is invalid or does not exists in current language');

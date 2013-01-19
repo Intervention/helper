@@ -13,5 +13,11 @@ return array(
     'year_choice' => 'year|years',
 
     'age' => ':time :period',
-    
+
+    'formats' => array(
+        'date' => '%B %e, %Y',
+        'datetime' => '%B %e, %Y, %I:%M %p',
+        'digitdate' => '%m/%d/%Y',
+        'iso' => '%Y-%m-%d %H:%M:%S'
+    )
 );
