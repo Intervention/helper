@@ -29,7 +29,7 @@ class StringServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$this->app['string'] = $this->app->share(function($app) {
-			return new String;
+			return new String($app['config']->get('app.locale'));
 		});
 	}
 
