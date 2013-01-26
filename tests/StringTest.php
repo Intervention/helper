@@ -58,6 +58,15 @@ class StringTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->stringHelper->moneyFormat(241.90, false), '241.90');
     }
 
+    public function testShorten()
+    {
+        $str = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        $this->assertEquals($this->stringHelper->shorten($str), 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut &hellip;');
+        $this->assertEquals($this->stringHelper->shorten($str, 25), 'Lorem ipsum dolor sit &hellip;');
+        $this->assertEquals($this->stringHelper->shorten($str, 10), 'Lorem &hellip;');
+        $this->assertEquals($this->stringHelper->shorten($str, 10, '...'), 'Lorem ...');
+    }
+
     public function testRandom()
     {
         $random1 = $this->stringHelper->random(32);
@@ -78,7 +87,13 @@ class StringTest extends PHPUnit_Framework_TestCase
         $this->assertTrue((bool) preg_match('/^[a-zA-Z]{24}$/', $random_alpha));
         $this->assertTrue((bool) preg_match('/^[a-zA-Z0-9]{24}$/', $random_alnum));
         $this->assertTrue((bool) preg_match('/^[0-9]{24}$/', $random_num));
+    }
 
-
+    public function testSlug()
+    {
+        $this->assertEquals($this->stringHelper->slug('My First Blog Post'), 'my_first_blog_post');
+        $this->assertEquals($this->stringHelper->slug('My First Blog Post', '-'), 'my-first-blog-post');
+        $this->assertEquals($this->stringHelper->slug('My First Blog Post', 'test'), 'my_first_blog_post');
+        $this->assertEquals($this->stringHelper->slug('Das ist ein Ä und das ist ein ß!'), 'das_ist_ein_ae_und_das_ist_ein_ss');
     }
 }

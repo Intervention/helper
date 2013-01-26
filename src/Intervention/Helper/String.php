@@ -86,7 +86,7 @@ class String
         return $str;
     }
 
-    function ellipsize($str, $max_length, $position = 1, $ellipsis = '&hellip;')
+    public function ellipsize($str, $max_length, $position = 1, $ellipsis = '&hellip;')
     {
         // Strip tags
         $str = trim(strip_tags($str));
@@ -111,6 +111,32 @@ class String
         }
 
         return $beg.$ellipsis.$end;
+    }
+
+    public function slug($str, $limiter = '_')
+    {
+        $str = mb_strtolower($str, 'utf-8');
+        $limiter = in_array($limiter, array('-', '_')) ? $limiter : '_';
+
+        $search = array(
+            0 => '/\s/',
+            1 => '/ä/',
+            2 => '/ö/',
+            3 => '/ü/',
+            4 => '/ß/',
+            5 => '/[^a-zA-Z0-9_-]/'
+        );
+    
+        $replace = array(
+            0 => $limiter,
+            1 => 'ae',
+            2 => 'oe',
+            3 => 'ue',
+            4 => 'ss',
+            5 => ''
+        );
+        
+        return preg_replace($search, $replace, $str);
     }
 
 }
