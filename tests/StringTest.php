@@ -57,4 +57,28 @@ class StringTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->stringHelper->moneyFormat(9000.10, 'USD'), 'USD 9,000.10');
         $this->assertEquals($this->stringHelper->moneyFormat(241.90, false), '241.90');
     }
+
+    public function testRandom()
+    {
+        $random1 = $this->stringHelper->random(32);
+        $random2 = $this->stringHelper->random(32);
+        $random3 = $this->stringHelper->random(10);
+
+        $random_alpha = $this->stringHelper->random(24, 'alpha');
+        $random_alnum = $this->stringHelper->random(24, 'alnum');
+        $random_num = $this->stringHelper->random(24, 'num');
+        $random_md5 = $this->stringHelper->random(100, 'md5');
+
+        $this->assertEquals(strlen($random1), 32);
+        $this->assertEquals(strlen($random2), 32);
+        $this->assertEquals(strlen($random3), 10);
+        $this->assertEquals(strlen($random_md5), 32);
+        $this->assertFalse($random1 == $random2);
+
+        $this->assertTrue((bool) preg_match('/^[a-zA-Z]{24}$/', $random_alpha));
+        $this->assertTrue((bool) preg_match('/^[a-zA-Z0-9]{24}$/', $random_alnum));
+        $this->assertTrue((bool) preg_match('/^[0-9]{24}$/', $random_num));
+
+
+    }
 }

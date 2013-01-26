@@ -46,4 +46,71 @@ class String
         
         return $format;
     }
+
+    public function random($length = 32, $type = 'alnum')
+    {
+        switch ($type) {
+
+            case 'alpha':
+                $pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                break;
+
+            case 'alnum':
+            case 'alphanum':
+                $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                break;
+
+            case 'num':
+            case 'numeric':
+                $pool = '0123456789';
+                break;
+
+            case 'md5':
+                return md5(uniqid(mt_rand()));
+                break;
+
+            default:
+                throw new \Exception("Invalid random string type [{$type}].");
+        }
+
+        return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
+    }
+
+    public function shorten($str, $length = 100, $end = '&hellip;')
+    {
+        if (strlen($str) > $length) {
+            $str = substr(trim($str), 0, $length);
+            $str = substr($str, 0, strlen($str) - strpos(strrev($str), ' '));
+            $str = $str.$end;
+        }
+        return $str;
+    }
+
+    function ellipsize($str, $max_length, $position = 1, $ellipsis = '&hellip;')
+    {
+        // Strip tags
+        $str = trim(strip_tags($str));
+
+        // Is the string long enough to ellipsize?
+        if (strlen($str) <= $max_length)
+        {
+            return $str;
+        }
+
+        $beg = substr($str, 0, floor($max_length * $position));
+
+        $position = ($position > 1) ? 1 : $position;
+
+        if ($position === 1)
+        {
+            $end = substr($str, 0, -($max_length - strlen($beg)));
+        }
+        else
+        {
+            $end = substr($str, -($max_length - strlen($beg)));
+        }
+
+        return $beg.$ellipsis.$end;
+    }
+
 }
