@@ -76,41 +76,14 @@ class String
         return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
     }
 
-    public function shorten($str, $length = 100, $end = '&hellip;')
+    public function shorten($str, $length = 100, $end = '&#8230;')
     {
         if (strlen($str) > $length) {
             $str = substr(trim($str), 0, $length);
             $str = substr($str, 0, strlen($str) - strpos(strrev($str), ' '));
-            $str = $str.$end;
+            $str = trim($str.$end);
         }
         return $str;
-    }
-
-    public function ellipsize($str, $max_length, $position = 1, $ellipsis = '&hellip;')
-    {
-        // Strip tags
-        $str = trim(strip_tags($str));
-
-        // Is the string long enough to ellipsize?
-        if (strlen($str) <= $max_length)
-        {
-            return $str;
-        }
-
-        $beg = substr($str, 0, floor($max_length * $position));
-
-        $position = ($position > 1) ? 1 : $position;
-
-        if ($position === 1)
-        {
-            $end = substr($str, 0, -($max_length - strlen($beg)));
-        }
-        else
-        {
-            $end = substr($str, -($max_length - strlen($beg)));
-        }
-
-        return $beg.$ellipsis.$end;
     }
 
     public function slug($str, $limiter = '_')
