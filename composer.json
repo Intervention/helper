@@ -1,7 +1,7 @@
 {
     "name": "intervention/helper",
     "description": "Easier handling and formating of strings and dates",
-    "version": "0.6.0-dev",
+    "version": "0.6.5-dev",
     "keywords": ["string", "date", "helper"],
     "license": "MIT",
     "authors": [
