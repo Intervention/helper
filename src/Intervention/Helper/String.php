@@ -5,10 +5,12 @@ namespace Intervention\Helper;
 class String
 {
     public $locale;
+    public $encoding;
 
-    public function __construct($locale = null) 
+    public function __construct($locale = null, $encoding = 'utf-8') 
     {
         $this->locale = $locale;
+        $this->encoding = $encoding;
     }
 
     static public function pluralize($count = 1, $singular, $plural)
@@ -88,7 +90,7 @@ class String
 
     public function slug($str, $limiter = '_')
     {
-        $str = mb_strtolower($str, 'utf-8');
+        $str = mb_strtolower($str, $this->encoding);
         $limiter = in_array($limiter, array('-', '_')) ? $limiter : '_';
 
         $search = array(
