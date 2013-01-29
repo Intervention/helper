@@ -40,3 +40,22 @@ Add the facade of this package to the `$aliases` array.
         'String' => 'Intervention\Helper\Facades\String'
 
     ),
+
+## Usage
+
+### Date Helper
+
+* Date::__construct - Returns new Date Helper object
+* Date::format - Formats given timestamp to a readable format
+* Date::age - Calculates age between timestamps and returns readable format
+
+### String Helper
+
+* Date::__construct - Returns new String Helper object
+* Date::pluralize - Returns singular or plural based on the given count
+* Date::alternator - Returns given parameters by turns
+* Date::moneyFormat - Format amount of money based on locale
+* Date::random - Returns random string in wanted format
+* Date::shorten - Shortens text to length and keeps integrity of words
+* Date::slug - Format given string to url-friendly format
+
