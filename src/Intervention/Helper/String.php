@@ -3,21 +3,51 @@
 namespace Intervention\Helper;
 
 class String
-{
+{   
+    /**
+     * The locale of the class
+     * 
+     * @var string
+     */
     public $locale;
-    public $encoding;
 
+    /**
+     * String encoding definition
+     * 
+     * @var string
+     */
+    public $encoding = 'utf-8';
+
+    /**
+     * Create new String Helper instance
+     * 
+     * @param string $locale
+     * @param string $encoding
+     */
     public function __construct($locale = null, $encoding = 'utf-8') 
     {
         $this->locale = $locale;
         $this->encoding = $encoding;
     }
 
+    /**
+     * Return singular or plural parameter, based on the given count
+     * 
+     * @param  integer $count
+     * @param  string  $singular
+     * @param  string  $plural
+     * @return string
+     */
     static public function pluralize($count = 1, $singular, $plural)
     {
         return ($count > 1) ? $plural : $singular;
     }
 
+    /**
+     * Cycles through given parameters
+     * 
+     * @return mixed    Values to cycle through as array or different parameters
+     */
     static public function alternator()
     {
         static $i;
@@ -31,6 +61,13 @@ class String
         return $args[($i++ % count($args))];
     }
 
+    /**
+     * Format amount of money based on locale
+     * 
+     * @param  float $amount
+     * @param  string $currency
+     * @return string
+     */
     public function moneyFormat($amount, $currency = '€')
     {
         switch ($this->locale) {
@@ -49,6 +86,13 @@ class String
         return $format;
     }
 
+    /**
+     * Return random string
+     * 
+     * @param  integer $length
+     * @param  string  $type
+     * @return string
+     */
     public function random($length = 32, $type = 'alnum')
     {
         switch ($type) {
@@ -78,6 +122,14 @@ class String
         return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
     }
 
+    /**
+     * Shortens text to length and keeps integrity of words
+     * 
+     * @param  string  $str
+     * @param  integer $length
+     * @param  string  $end
+     * @return string
+     */
     public function shorten($str, $length = 100, $end = '&#8230;')
     {
         if (strlen($str) > $length) {
@@ -88,6 +140,13 @@ class String
         return $str;
     }
 
+    /**
+     * Format given string to url-friendly format
+     * 
+     * @param  string $str
+     * @param  string $limiter
+     * @return string
+     */
     public function slug($str, $limiter = '_')
     {
         $str = mb_strtolower($str, $this->encoding);

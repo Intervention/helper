@@ -7,13 +7,29 @@ use Illuminate\Translation\Translator;
 
 class Date
 {
+    /**
+     * Translator instance
+     * 
+     * @var Translator
+     */
     protected $translator;
 
+    /**
+     * Create a new instance of the date helper
+     * 
+     * @param Translator $translator
+     */
     public function __construct(Translator $translator = null) 
     {
         $this->translator = $translator;
     }
 
+    /**
+     * Format translation key - checks for package- and app-translations
+     * 
+     * @param  string $key
+     * @return string
+     */
     private function getTranslationKey($key = null)
     {
         $t = $this->translator;
@@ -21,6 +37,13 @@ class Date
         return $key;
     }
 
+    /**
+     * Format a timestamp based on translation
+     * 
+     * @param  mixed $timestamp    accepts string, unix timestamp and DateTime object
+     * @param  string $format
+     * @return string
+     */
     public function format($timestamp = null, $format = 'date')
     {
         $timestamp = is_a($timestamp, 'DateTime') ? $timestamp : new DateTime($timestamp);
@@ -35,6 +58,14 @@ class Date
         return strftime($format, $timestamp->format('U'));
     }
     
+    /**
+     * Calculate age for given timestamp(s)
+     * 
+     * @param  mixed $timestamp1  accepts string, unix-timestamp and DateTime object
+     * @param  mixed $timestamp2  accepts string, unix-timestamp and DateTime object
+     * @param  string $unit       constraint output to a given unit
+     * @return string
+     */
     public function age($timestamp1, $timestamp2 = null, $unit = null)
     {
         $timestamp1 = is_a($timestamp1, 'DateTime') ? $timestamp1 : new DateTime($timestamp1);
