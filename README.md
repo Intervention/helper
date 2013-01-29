@@ -51,11 +51,11 @@ Add the facade of this package to the `$aliases` array.
 
 ### String Helper
 
-* Date::__construct - Returns new String Helper object
-* Date::pluralize - Returns singular or plural based on the given count
-* Date::alternator - Returns given parameters by turns
-* Date::moneyFormat - Format amount of money based on locale
-* Date::random - Returns random string in wanted format
-* Date::shorten - Shortens text to length and keeps integrity of words
-* Date::slug - Format given string to url-friendly format
+* String::__construct - Returns new String Helper object
+* String::pluralize - Returns singular or plural based on the given count
+* String::alternator - Returns given parameters by turns
+* String::moneyFormat - Format amount of money based on locale
+* String::random - Returns random string in wanted format
+* String::shorten - Shortens text to length and keeps integrity of words
+* String::slug - Format given string to url-friendly format
 
