@@ -376,11 +376,28 @@ class DateTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('1 year', $age);
     }
 
+    public function testAgeWithUnixTimestamp()
+    {
+        $age = $this->dateHelper->age(1292177455, 1292177480);
+        $this->assertEquals('25 seconds', $age);
+
+        $age = $this->dateHelper->age(1292177455, 1232175480);
+        $this->assertEquals('1 year', $age);
+    }
+
     public function testFormat()
     {
         $timestamp = '2013-01-17 13:41:12';
         $var = $this->dateHelper->format($timestamp, 'digitdate');
         $this->assertEquals('01/17/2013', $var);
+
+        $timestamp = '1292177455';
+        $var = $this->dateHelper->format($timestamp, 'digitdate');
+        $this->assertEquals('12/12/2010', $var);
+
+        $timestamp = 1292177455;
+        $var = $this->dateHelper->format($timestamp, 'digitdate');
+        $this->assertEquals('12/12/2010', $var);
     }
 
 }

@@ -46,6 +46,7 @@ class Date
      */
     public function format($timestamp = null, $format = 'date')
     {
+        $timestamp = is_numeric($timestamp) ? '@'.intval($timestamp) : $timestamp;
         $timestamp = is_a($timestamp, 'DateTime') ? $timestamp : new DateTime($timestamp);
         
         $key = $this->getTranslationKey("date.formats.{$format}");
@@ -68,7 +69,9 @@ class Date
      */
     public function age($timestamp1, $timestamp2 = null, $unit = null)
     {
+        $timestamp1 = is_numeric($timestamp1) ? '@'.intval($timestamp1) : $timestamp1;
         $timestamp1 = is_a($timestamp1, 'DateTime') ? $timestamp1 : new DateTime($timestamp1);
+        $timestamp2 = is_numeric($timestamp2) ? '@'.intval($timestamp2) : $timestamp2;
         $timestamp2 = is_a($timestamp2, 'DateTime') ? $timestamp2 : new DateTime($timestamp2);
         
         if ($timestamp1 == $timestamp2) {
