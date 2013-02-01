@@ -46,8 +46,25 @@ Add the facade of this package to the `$aliases` array.
 ### Date Helper
 
 * Date::__construct - Returns new Date Helper object
-* Date::format - Formats given timestamp to a readable format
+* Date::format - Formats given timestamp to a readable format (available formats are 'date', 'datetime', 'digitdate', 'iso')
 * Date::age - Calculates age between timestamps and returns readable format
+
+### Code Example (Laravel)
+
+```php
+// returns '24. Oktober 2003, 10:45' in german locale
+return Date::format('2003-10-24 10:45:13', 'datetime');
+
+// returns 'October 24, 2003, 10:45 AM' in english locale
+return Date::format('2003-10-24 10:45:13', 'datetime');
+
+// returns '10 Jahre' in german locale
+return Date::age('2003-10-24 10:00', '2013-10-24 10:45:13');
+
+// methods also takes unix timestamps of DateTime objects, second parameter is optional
+return Date::age(1292177455);
+```
+
 
 ### String Helper
 
@@ -59,3 +76,23 @@ Add the facade of this package to the `$aliases` array.
 * String::shorten - Shortens text to length and keeps integrity of words
 * String::slug - Format given string to url-friendly format
 
+### Code Example (Laravel)
+
+```php
+// returns '4 cars'
+return String::pluralize(4, 'car', 'cars');
+
+// returns '1.200,00 EUR' in german locale
+return String::moneyFormat(1200, 'EUR');
+
+// echoes three different values one after another
+for ($i=0; $i < 3; $i++) { 
+    echo String::alternator('one', 'two', 'three');
+}
+
+// you may also use arrays as input for alternator
+for ($i=0; $i < 3; $i++) { 
+    echo String::alternator(array('one', 'two', 'three'));
+}
+
+```
