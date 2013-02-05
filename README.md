@@ -85,13 +85,13 @@ return String::pluralize(4, 'car', 'cars');
 // returns '1.200,00 EUR' in german locale
 return String::moneyFormat(1200, 'EUR');
 
-// echoes three different values one after another
-for ($i=0; $i < 3; $i++) { 
+// echoes different values repeated one after another
+for ($i=0; $i < 10; $i++) { 
     echo String::alternator('one', 'two', 'three');
 }
 
 // you may also use arrays as input for alternator
-for ($i=0; $i < 3; $i++) { 
+for ($i=0; $i < 10; $i++) { 
     echo String::alternator(array('one', 'two', 'three'));
 }
 
