@@ -305,7 +305,7 @@ class DateTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($answer, $age);
     }
 
-    
+
     public function testAgeIsSecondsWithUnit()
     {
         $time = 34300803;
@@ -314,7 +314,7 @@ class DateTest extends PHPUnit_Framework_TestCase
 
         $age = $this->dateHelper->age('2012-12-12 12:12:12', '2011-11-11 11:11:11', 'second');
         $this->assertEquals('34300803 seconds', $age);
-    }    
+    }
 
     public function testAgeIsMinutesWithUnit()
     {
