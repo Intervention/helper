@@ -99,6 +99,22 @@ class String
     }
 
     /**
+     * Format byte filesize to human readable filesize
+     *
+     * @param  integer $bytes
+     * @return string
+     */
+    public function formatFilesize($bytes)
+    {
+        $units = array('bytes', 'kb', 'MB', 'GB', 'TB', 'PB');
+        $level = floor(log($bytes)/log(1024));
+
+        $output = sprintf('%.2f %s', ($bytes/pow(1024, floor($level))), $units[$level]);
+
+        return $output;
+    }
+
+    /**
      * Return random string
      *
      * @param  integer $length

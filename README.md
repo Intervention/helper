@@ -72,6 +72,7 @@ return Date::age(1292177455);
 * String::pluralize - Returns singular or plural based on the given count
 * String::alternator - Returns given parameters by turns
 * String::formatMoney - Format amount of money based on locale
+* String::formatFilesize - Format filesize in bytes to a more readable version
 * String::random - Returns random string in wanted format
 * String::shorten - Shortens text to length and keeps integrity of words
 * String::slug - Format given string to url-friendly format

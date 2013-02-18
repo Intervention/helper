@@ -97,4 +97,14 @@ class StringTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->stringHelper->slug('My First Blog Post', 'test'), 'my_first_blog_post');
         $this->assertEquals($this->stringHelper->slug('Das ist ein Ä und das ist ein ß!'), 'das_ist_ein_ae_und_das_ist_ein_ss');
     }
+
+    public function testFormatFilesize()
+    {
+        $this->assertEquals($this->stringHelper->formatFilesize(120), '120.00 bytes');
+        $this->assertEquals($this->stringHelper->formatFilesize(1200), '1.17 kb');
+        $this->assertEquals($this->stringHelper->formatFilesize(1200000), '1.14 MB');
+        $this->assertEquals($this->stringHelper->formatFilesize(1200000000), '1.12 GB');
+        $this->assertEquals($this->stringHelper->formatFilesize(1200000000000), '1.09 TB');
+        $this->assertEquals($this->stringHelper->formatFilesize(1200000000000000), '1.07 PB');
+    }
 }
