@@ -68,7 +68,7 @@ class String
      * @param  string $currency
      * @return string
      */
-    public function moneyFormat($amount, $currency = '€')
+    public function formatMoney($amount, $currency = '€')
     {
         switch ($this->locale) {
             case 'de':
@@ -84,6 +84,18 @@ class String
         }
         
         return $format;
+    }
+
+    /**
+     * Legacy method for 'formatMoney'
+     * 
+     * @param  float    $amount
+     * @param  string   $currency
+     * @return string
+     */
+    public function moneyFormat($amount, $currency = '€')
+    {
+        return $this->formatMoney($amount, $currency);
     }
 
     /**

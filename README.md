@@ -71,7 +71,7 @@ return Date::age(1292177455);
 * String::__construct - Returns new String Helper object
 * String::pluralize - Returns singular or plural based on the given count
 * String::alternator - Returns given parameters by turns
-* String::moneyFormat - Format amount of money based on locale
+* String::formatMoney - Format amount of money based on locale
 * String::random - Returns random string in wanted format
 * String::shorten - Shortens text to length and keeps integrity of words
 * String::slug - Format given string to url-friendly format
@@ -83,7 +83,7 @@ return Date::age(1292177455);
 return String::pluralize(4, 'car', 'cars');
 
 // returns '1.200,00 EUR' in german locale
-return String::moneyFormat(1200, 'EUR');
+return String::formatMoney(1200, 'EUR');
 
 // echoes different values repeated one after another
 for ($i=0; $i < 10; $i++) { 
