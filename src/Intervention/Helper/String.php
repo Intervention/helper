@@ -1,30 +1,30 @@
-<?php 
+<?php
 
 namespace Intervention\Helper;
 
 class String
-{   
+{
     /**
      * The locale of the class
-     * 
+     *
      * @var string
      */
     public $locale;
 
     /**
      * String encoding definition
-     * 
+     *
      * @var string
      */
     public $encoding = 'utf-8';
 
     /**
      * Create new String Helper instance
-     * 
+     *
      * @param string $locale
      * @param string $encoding
      */
-    public function __construct($locale = null, $encoding = 'utf-8') 
+    public function __construct($locale = null, $encoding = 'utf-8')
     {
         $this->locale = $locale;
         $this->encoding = $encoding;
@@ -32,23 +32,23 @@ class String
 
     /**
      * Return singular or plural parameter, based on the given count
-     * 
+     *
      * @param  integer $count
      * @param  string  $singular
      * @param  string  $plural
      * @return string
      */
-    static public function pluralize($count = 1, $singular, $plural)
+    public static function pluralize($count = 1, $singular, $plural)
     {
         return ($count > 1) ? $plural : $singular;
     }
 
     /**
      * Cycles through given parameters
-     * 
+     *
      * @return mixed    Values to cycle through as array or different parameters
      */
-    static public function alternator()
+    public static function alternator()
     {
         static $i;
 
@@ -63,7 +63,7 @@ class String
 
     /**
      * Format amount of money based on locale
-     * 
+     *
      * @param  float $amount
      * @param  string $currency
      * @return string
@@ -75,14 +75,14 @@ class String
                 $amount = number_format($amount, 2, ',', '.');
                 $format = is_string($currency) ? $amount.' '.$currency : $amount;
                 break;
-            
+
             default:
             case 'en':
                 $amount = number_format($amount, 2, '.', ',');
                 $format = is_string($currency) ? $currency.' '.$amount : $amount;
                 break;
         }
-        
+
         return $format;
     }
 
@@ -100,7 +100,7 @@ class String
 
     /**
      * Return random string
-     * 
+     *
      * @param  integer $length
      * @param  string  $type
      * @return string
@@ -136,7 +136,7 @@ class String
 
     /**
      * Shortens text to length and keeps integrity of words
-     * 
+     *
      * @param  string  $str
      * @param  integer $length
      * @param  string  $end
@@ -154,7 +154,7 @@ class String
 
     /**
      * Format given string to url-friendly format
-     * 
+     *
      * @param  string $str
      * @param  string $limiter
      * @return string
@@ -172,7 +172,7 @@ class String
             4 => '/ß/',
             5 => '/[^a-zA-Z0-9_-]/'
         );
-    
+
         $replace = array(
             0 => $limiter,
             1 => 'ae',
@@ -181,7 +181,7 @@ class String
             4 => 'ss',
             5 => ''
         );
-        
+
         return preg_replace($search, $replace, $str);
     }
 

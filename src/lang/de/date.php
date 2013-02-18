@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    
+
     'n0w' => 'Jetzt',
 
     'second_choice' => 'Sekunde|Sekunden',
