@@ -97,3 +97,7 @@ for ($i=0; $i < 10; $i++) {
 }
 
 ```
+
+## License
+
+Intervention Helper Class is licensed under the [MIT License](http://opensource.org/licenses/MIT).
