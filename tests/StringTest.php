@@ -4,6 +4,12 @@ use Intervention\Helper\String;
 
 class StringTest extends PHPUnit_Framework_TestCase
 {
+
+    /**
+     * @var Intervention\Helper\String;
+     */
+    protected $stringHelper;
+
     public function setUp()
     {
         $this->stringHelper = new String;
@@ -19,6 +25,18 @@ class StringTest extends PHPUnit_Framework_TestCase
     {
         $plural = $this->stringHelper->pluralize(2, 'car', 'cars');
         $this->assertEquals($plural, 'cars');
+    }
+
+    public function testAutoPluralizeSingular()
+    {
+        $singular = $this->stringHelper->pluralize(1, 'car');
+        $this->assertEquals($singular, 'car');
+    }
+
+    public function testAutoPluralizePlural()
+    {
+        $singular = $this->stringHelper->pluralize(5, 'car');
+        $this->assertEquals($singular, 'cars');
     }
 
     public function testAlternatorArray()
