@@ -16,9 +16,6 @@
         "illuminate/translation": "4.*",
         "doctrine/inflector": "1.0.*@dev"
     },
-    "require-dev": {
-        "phpunit/phpunit": "3.7.*"
-    },
     "autoload": {
         "psr-0": {
             "Intervention\\Helper": "src/"
