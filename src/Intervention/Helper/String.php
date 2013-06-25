@@ -2,6 +2,8 @@
 
 namespace Intervention\Helper;
 
+use Doctrine\Common\Inflector\Inflector;
+
 class String
 {
     /**
@@ -38,9 +40,13 @@ class String
      * @param  string  $plural
      * @return string
      */
-    public static function pluralize($count = 1, $singular, $plural)
+    public static function pluralize($count = 1, $singular, $plural = null)
     {
-        return ($count > 1) ? $plural : $singular;
+        if ($count == 1) {
+            return $singular;
+        }
+
+        return is_null($plural) ? Inflector::pluralize($singular) : $plural;
     }
 
     /**
