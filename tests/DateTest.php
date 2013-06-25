@@ -398,6 +398,14 @@ class DateTest extends PHPUnit_Framework_TestCase
         $timestamp = 1292177455;
         $var = $this->dateHelper->format($timestamp, 'digitdate');
         $this->assertEquals('12/12/2010', $var);
+
+        $timestamp = new \DateTime('2010-12-24');
+        $var = $this->dateHelper->format($timestamp, 'digitdate');
+        $this->assertEquals('12/24/2010', $var);
+
+        $timestamp = new \DateTime('2010-12-24 23:00:00');
+        $var = $this->dateHelper->format($timestamp, 'time');
+        $this->assertEquals('11:00 PM', $var);
     }
 
 }
