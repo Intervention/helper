@@ -44,7 +44,7 @@ class Date
      * @param  string $format
      * @return string
      */
-    public function format($timestamp = null, $format = 'date')
+    public function format($format = 'date', $timestamp = null)
     {
         $timestamp = is_numeric($timestamp) ? '@'.intval($timestamp) : $timestamp;
         $timestamp = is_a($timestamp, 'DateTime') ? $timestamp : new DateTime($timestamp);

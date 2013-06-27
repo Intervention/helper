@@ -18,6 +18,7 @@ return array(
         'date' => '%e. %B %Y',
         'datetime' => '%e. %B %Y, %H:%M',
         'time' => '%H:%M',
+        'month' => '%B %Y',
         'digitdate' => '%d.%m.%Y',
         'iso' => '%Y-%m-%d %H:%M:%S'
     )

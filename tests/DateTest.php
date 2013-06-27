@@ -387,25 +387,58 @@ class DateTest extends PHPUnit_Framework_TestCase
 
     public function testFormat()
     {
-        $timestamp = '2013-01-17 13:41:12';
-        $var = $this->dateHelper->format($timestamp, 'digitdate');
-        $this->assertEquals('01/17/2013', $var);
+        // no parameters
+        $var = $this->dateHelper->format();
+        $this->assertEquals(strftime('%B %e, %Y'), $var);
 
-        $timestamp = '1292177455';
-        $var = $this->dateHelper->format($timestamp, 'digitdate');
-        $this->assertEquals('12/12/2010', $var);
+        // with formats
+        $var = $this->dateHelper->format('date');
+        $this->assertEquals(strftime('%B %e, %Y'), $var);
 
-        $timestamp = 1292177455;
-        $var = $this->dateHelper->format($timestamp, 'digitdate');
-        $this->assertEquals('12/12/2010', $var);
+        $var = $this->dateHelper->format('datetime');
+        $this->assertEquals(strftime('%B %e, %Y, %I:%M %p'), $var);
 
-        $timestamp = new \DateTime('2010-12-24');
-        $var = $this->dateHelper->format($timestamp, 'digitdate');
-        $this->assertEquals('12/24/2010', $var);
+        $var = $this->dateHelper->format('time');
+        $this->assertEquals(strftime('%I:%M %p'), $var);
 
-        $timestamp = new \DateTime('2010-12-24 23:00:00');
-        $var = $this->dateHelper->format($timestamp, 'time');
-        $this->assertEquals('11:00 PM', $var);
+        $var = $this->dateHelper->format('digitdate');
+        $this->assertEquals(strftime('%m/%d/%Y'), $var);
+
+        $var = $this->dateHelper->format('iso');
+        $this->assertEquals(strftime('%Y-%m-%d %H:%M:%S'), $var);
+
+        // different date inputs
+        $timestamp = 1355310732;
+        $var = $this->dateHelper->format('iso', $timestamp);
+        $this->assertEquals('2012-12-12 12:12:12', $var);
+
+        $timestamp = '1355310732';
+        $var = $this->dateHelper->format('iso', $timestamp);
+        $this->assertEquals('2012-12-12 12:12:12', $var);
+
+        $timestamp = '2012-12-12 12:12:12';
+        $var = $this->dateHelper->format('iso', $timestamp);
+        $this->assertEquals('2012-12-12 12:12:12', $var);
+
+        $timestamp = '11.12.2012 12:12:12';
+        $var = $this->dateHelper->format('iso', $timestamp);
+        $this->assertEquals('2012-12-11 12:12:12', $var);
+
+        $timestamp = '12/13/2012 12:12:12';
+        $var = $this->dateHelper->format('iso', $timestamp);
+        $this->assertEquals('2012-12-13 12:12:12', $var);
+
+        $timestamp = new \DateTime('2012-12-12');
+        $var = $this->dateHelper->format('iso', $timestamp);
+        $this->assertEquals('2012-12-12 00:00:00', $var);
+
+        $timestamp = new \DateTime('2012-12-12 12:12:12');
+        $var = $this->dateHelper->format('time', $timestamp);
+        $this->assertEquals('12:12 PM', $var);
+
+        $timestamp = 'first day of june 2012';
+        $var = $this->dateHelper->format('iso', $timestamp);
+        $this->assertEquals('2012-06-01 00:00:00', $var);
     }
 
 }
