@@ -1,5 +1,5 @@
 {
-    "name": "intervention/helper",
+    "name": "jasonlfunk/helper",
     "description": "Easier handling and formating of strings and dates",
     "keywords": ["string", "date", "helper", "laravel"],
     "license": "MIT",

@@ -86,7 +86,7 @@ class String
             case 'en':
                 $amount = number_format($amount, 2, '.', ',');
                 $format = is_string($currency) ? $currency.
-                    ((!isset($options['space_after_symbol']) || $options['space_after_symbol'])?' ':'').
+                    ((isset($options['space_after_symbol']) && $options['space_after_symbol'])?' ':'').
                     $amount : $amount;
                 break;
         }
