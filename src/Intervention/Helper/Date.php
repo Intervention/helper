@@ -3,6 +3,7 @@
 namespace Intervention\Helper;
 
 use \DateTime;
+use \DateTimeZone;
 use Illuminate\Translation\Translator;
 
 class Date
@@ -44,11 +45,13 @@ class Date
      * @param  string $format
      * @return string
      */
-    public function format($format = 'date', $timestamp = null)
+    public function format($format = 'date', $timestamp = null, $timezone = NULL)
     {
         $timestamp = is_numeric($timestamp) ? '@'.intval($timestamp) : $timestamp;
         $timestamp = is_a($timestamp, 'DateTime') ? $timestamp : new DateTime($timestamp);
 
+        if($timezone !== NULL) $timestamp->setTimezone(new DateTimeZone($timezone));
+        
         $key = $this->getTranslationKey("date.formats.{$format}");
         $format = $this->translator->has($key) ? $this->translator->get($key) : null;
 
@@ -56,7 +59,7 @@ class Date
             throw new \InvalidArgumentException('Date format is invalid or does not exists in current language');
         }
 
-        return strftime($format, $timestamp->format('U'));
+        return $timestamp->format($format);
     }
 
     /**

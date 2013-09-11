@@ -15,11 +15,11 @@ return array(
     'age' => ':time :period',
 
     'formats' => array(
-        'date' => '%B %e, %Y',
-        'datetime' => '%B %e, %Y, %I:%M %p',
-        'time' => '%I:%M %p',
-        'month' => '%B %Y',
-        'digitdate' => '%m/%d/%Y',
-        'iso' => '%Y-%m-%d %H:%M:%S'
+        'date' => 'M jS, Y',
+        'datetime' => 'M jS, Y, g:i a',
+        'time' => 'g:i a',
+        'month' => 'F Y',
+        'digitdate' => 'm/d/Y',
+        'iso' => 'Y-m-d H:i:s'
     )
 );

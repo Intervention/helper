@@ -74,7 +74,7 @@ class String
      * @param  string $currency
      * @return string
      */
-    public function formatMoney($amount, $currency = '€')
+    public function formatMoney($amount, $currency = '€', $options = array())
     {
         switch ($this->locale) {
             case 'de':
@@ -85,7 +85,9 @@ class String
             default:
             case 'en':
                 $amount = number_format($amount, 2, '.', ',');
-                $format = is_string($currency) ? $currency.' '.$amount : $amount;
+                $format = is_string($currency) ? $currency.
+                    ((isset($options['space_after_symbol']) && $options['space_after_symbol'])?' ':'').
+                    $amount : $amount;
                 break;
         }
 
