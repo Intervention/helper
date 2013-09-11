@@ -5,6 +5,11 @@
     "license": "MIT",
     "authors": [
         {
+            "name": "Jason Funk",
+            "email": "jason@jasonfunk.net",
+            "homepage": "http://jasonfunk.net/"
+        },
+        {
             "name": "Oliver Vogel",
             "email": "oliver@olivervogel.net",
             "homepage": "http://olivervogel.net/"
