@@ -3,6 +3,7 @@
 namespace Intervention\Helper;
 
 use \DateTime;
+use \DateTimeZone;
 use Illuminate\Translation\Translator;
 
 class Date
@@ -58,7 +59,7 @@ class Date
             throw new \InvalidArgumentException('Date format is invalid or does not exists in current language');
         }
 
-        return strftime($format, $timestamp->format('U'));
+        return $timestamp->format($format);
     }
 
     /**
