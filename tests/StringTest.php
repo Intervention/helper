@@ -68,12 +68,30 @@ class StringTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->stringHelper->formatMoney(9.99), '9,99 €');
         $this->assertEquals($this->stringHelper->formatMoney(9.99, null), '9,99');
 
+        $this->stringHelper->locale = 'de';
+        $this->assertEquals($this->stringHelper->formatMoney(10, 'EUR'), '10,00 EUR');
+        $this->assertEquals($this->stringHelper->formatMoney(6000, 'EUR'), '6.000,00 EUR');
+        $this->assertEquals($this->stringHelper->formatMoney(149431.45, 'EUR'), '149.431,45 EUR');
+        $this->assertEquals($this->stringHelper->formatMoney(9.99, '$'), '9,99 $');
+        $this->assertEquals($this->stringHelper->formatMoney(9.99, null), '9,99');
+
         $this->stringHelper->locale = 'en';
-        $this->assertEquals($this->stringHelper->formatMoney(9.99, 'EUR'), 'EUR 9.99');
         $this->assertEquals($this->stringHelper->formatMoney(9.99, 'USD'), 'USD 9.99');
-        $this->assertEquals($this->stringHelper->formatMoney(149431.45), '€ 149,431.45');
+        $this->assertEquals($this->stringHelper->formatMoney(9.99, '$'), '$9.99');
+        $this->assertEquals($this->stringHelper->formatMoney(149431.45), '€149,431.45');
+        $this->assertEquals($this->stringHelper->formatMoney(149431.45, '$'), '$149,431.45');
         $this->assertEquals($this->stringHelper->formatMoney(9000.10, 'USD'), 'USD 9,000.10');
         $this->assertEquals($this->stringHelper->formatMoney(241.90, false), '241.90');
+
+        $this->stringHelper->locale = 'fr';
+        $this->assertEquals($this->stringHelper->formatMoney(149431.45, '$'), '149 431,45 $');
+
+        $this->stringHelper->locale = 'it';
+        $this->assertEquals($this->stringHelper->formatMoney(149431.45, '$'), '$ 149.431,45');
+
+        $this->stringHelper->locale = 'ru';
+        $this->assertEquals($this->stringHelper->formatMoney(149431.45, '$'), '149 431,45$');
+        
     }
 
     public function testShorten()
