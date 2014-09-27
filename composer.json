@@ -17,8 +17,8 @@
         "doctrine/inflector": "1.*"
     },
     "autoload": {
-        "psr-0": {
-            "Intervention\\Helper": "src/"
+        "psr-4": {
+            "Intervention\\Helper\\": "src/Intervention/Helper"
         }
     },
     "minimum-stability": "dev"
