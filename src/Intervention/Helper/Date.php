@@ -39,10 +39,10 @@ class Date
 
     /**
      * Format a timestamp based on translation
-	 *
-	 * Timezones are supported if DateTime object is given.
      *
-     * @param  mixed $timestamp    accepts string, unix timestamp and DateTime object	 
+     * Timezones are supported if DateTime object is given.
+     *
+     * @param  mixed $timestamp    accepts string, unix timestamp and DateTime object
      * @param  string $format
      * @return string
      */
@@ -58,7 +58,7 @@ class Date
             throw new \InvalidArgumentException('Date format is invalid or does not exists in current language');
         }
 
-		return strftime($format, strtotime($timestamp));        
+        return strftime($format, strtotime($timestamp));        
     }
 
     /**
