@@ -53,10 +53,10 @@ Add the facade of this package to the `$aliases` array.
 
 ```php
 // returns '24. Oktober 2003, 10:45' in german locale
-return Date::format('2003-10-24 10:45:13', 'datetime');
+return Date::format('datetime', '2003-10-24 10:45:13');
 
 // returns 'October 24, 2003, 10:45 AM' in english locale
-return Date::format('2003-10-24 10:45:13', 'datetime');
+return Date::format('datetime', '2003-10-24 10:45:13');
 
 // returns '10 Jahre' in german locale
 return Date::age('2003-10-24 10:00', '2013-10-24 10:45:13');
