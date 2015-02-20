@@ -1,4 +1,6 @@
-# Intervention Helper Class
+> This package is **abandoned** and will no longer be maintained. I suggest using [Carbon](https://github.com/briannesbitt/Carbon) for much more advanced date functionality and the helper functions of [Illuminate/Support](https://github.com/illuminate/support) to format text.
+
+# ~~Intervention Helper Class~~ (Abandoned)
 
 Easier handling and formating of strings and dates. Made to work with Laravel 4 but runs also standalone.
 
